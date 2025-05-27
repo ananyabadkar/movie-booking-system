@@ -1,0 +1,42 @@
+CREATE DATABASE movie_booking;
+
+USE movie_booking;
+
+CREATE TABLE users (
+  user_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+CREATE TABLE movies (
+  movie_id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(100),
+  genre VARCHAR(50),
+  duration INT
+);
+
+CREATE TABLE theaters (
+  theater_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100),
+  location VARCHAR(100)
+);
+
+CREATE TABLE shows (
+  show_id INT PRIMARY KEY AUTO_INCREMENT,
+  movie_id INT,
+  theater_id INT,
+  show_date DATE,
+  show_time TIME,
+  FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+  FOREIGN KEY (theater_id) REFERENCES theaters(theater_id)
+);
+
+CREATE TABLE bookings (
+  booking_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  show_id INT,
+  seat_number VARCHAR(10),
+  booking_time DATETIME,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (show_id) REFERENCES shows(show_id)
+);
