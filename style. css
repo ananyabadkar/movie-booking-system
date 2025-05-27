@@ -1,20 +1,27 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
   padding: 20px;
 }
-.seats {
-  list-style: none;
-  padding: 0;
-  display: flex;
+
+.container {
+  margin-top: 20px;
 }
+
+.seats {
+  margin-top: 15px;
+}
+
 .seat {
-  margin: 5px;
   padding: 10px 15px;
-  background: #eee;
-  border-radius: 5px;
+  margin: 5px;
+  background-color: #3498db;
+  color: white;
+  border: none;
   cursor: pointer;
 }
-.selected {
-  background: #6c5ce7;
-  color: white;
+
+.seat.selected {
+  background-color: #2ecc71;
 }
