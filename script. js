@@ -1,17 +1,15 @@
-const movieSelect = document.getElementById('movie');
-const total = document.getElementById('total');
-const seats = document.querySelectorAll('.seat');
+let total = 0;
 
-movieSelect.addEventListener('change', updateTotal);
-seats.forEach(seat => {
+document.querySelectorAll('.seat').forEach(seat => {
   seat.addEventListener('click', () => {
-    seat.classList.toggle('selected');
-    updateTotal();
+    const moviePrice = parseInt(document.getElementById('movie').value);
+    if (!seat.classList.contains('selected')) {
+      seat.classList.add('selected');
+      total += moviePrice;
+    } else {
+      seat.classList.remove('selected');
+      total -= moviePrice;
+    }
+    document.getElementById('output').innerText = `Total: ₹${total}`;
   });
 });
-
-function updateTotal() {
-  const seatCount = document.querySelectorAll('.seat.selected').length;
-  const ticketPrice = +movieSelect.value;
-  total.textContent = `Total: ₹${seatCount * ticketPrice}`;
-}
